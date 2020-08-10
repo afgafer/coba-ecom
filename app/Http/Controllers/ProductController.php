@@ -77,9 +77,10 @@ class ProductController extends Controller
      * @param  \App\models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    // public function show(Product $product)
+    // public function show($slug)
     // {
-    //     //
+    //     $product=Product::with(['category'])->where('slug',$slug)->first();
+    //     return view('ecom.show', compact('product'));
     // }
 
     /**

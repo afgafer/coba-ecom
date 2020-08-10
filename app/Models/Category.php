@@ -9,7 +9,7 @@ class Category extends Model
 {
     protected $fillable = ['name', 'parent_id', 'slug'];
 
-    public function prduct(){
+    public function product(){
         return $this->hasMany(Product::class);
     }
     public function parent(){

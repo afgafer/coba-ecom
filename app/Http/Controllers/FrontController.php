@@ -13,9 +13,22 @@ class FrontController extends Controller
         return view('ecom.index', compact('products'));
     }
 
-    public function product(){
+    public function products(){
         $products=Product::orderBy('created_at', 'DESC')->paginate(12);
         $categories=Category::with(['child'])->withCount(['child'])->getParent()->orderBy('name', 'ASC')->get();
         return view('ecom.product', compact('products','categories'));
     }
+    
+    public function categoryProduct($slug){
+        $products=Category::where('slug',$slug)->first()->product()->orderBy('created_at','DESC')->paginate(12);
+        //dd($products);
+        return view('ecom.product',compact('products'));
+    }
+
+    public function product($slug)
+    {
+        $product=Product::with(['category'])->where('slug',$slug)->first();
+        return view('ecom.show', compact('product'));
+    }
+
 }

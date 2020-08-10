@@ -3,7 +3,7 @@
         <a class="nav-link" href="{{ route('front.index') }}">Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('front.product') }}">Produk</a>
+        <a class="nav-link" href="{{ route('front.products') }}">Produk</a>
     </li>
     <li class="nav-item submenu dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>

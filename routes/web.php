@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','FrontController@index')->name('front.index');
-Route::get('/product','FrontController@product')->name('front.product');
+Route::get('/products','FrontController@products')->name('front.products');
+Route::get('/product/{slug}', 'FrontController@product')->name('front.product');
+Route::get('/category/{slug}', 'FrontController@categoryProduct')->name('front.category');
 
 Auth::routes();
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('category','CategoryController')->except(['create','show']);
+    Route::resource('category','CategoryController')->except(['create','product']);
     Route::resource('product','ProductController')->except(['show']);
     Route::get('product/bulk','ProductController@massUploadForm')->name('produk.bulk');
     Route::post('/product/bulk', 'ProductController@massUpload')->name('product.saveBulk');
