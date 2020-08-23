@@ -20,6 +20,9 @@ Route::get('/category/{slug}', 'FrontController@categoryProduct')->name('front.c
 Route::post('cart', 'CartController@add')->name('cart.add');
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::post('/cart/update', 'CartController@update')->name('cart.update');
+Route::get('checkout','CartController@checkout')->name('cart.checkout');
+Route::post('checkout','CartController@processCheckout')->name('cart.store');
+Route::get('checkout/{invoice}','CartController@checkoutFinish')->name('cart.finish');
 
 Auth::routes();
 
@@ -27,6 +30,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('category','CategoryController')->except(['create','product']);
     Route::resource('product','ProductController')->except(['show']);
-    Route::get('product/bulk','ProductController@massUploadForm')->name('produk.bulk');
+    Route::get('product/bulk','ProductController@massUploadForm')->name('product.bulk');
     Route::post('/product/bulk', 'ProductController@massUpload')->name('product.saveBulk');
 });

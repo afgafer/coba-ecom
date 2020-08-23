@@ -45,7 +45,7 @@
 						</thead>
 						<tbody>
               <!-- LOOPING DATA DARI VARIABLE CARTS -->
-                            @forelse ($carts as $row)
+                            @forelse ($cart as $row)
 							<tr>
 								<td>
 									<div class="media">
@@ -158,8 +158,8 @@
 								<td></td>
 								<td>
 									<div class="checkout_btn_inner">
-										<a class="gray_btn" href="#">Continue Shopping</a>
-										<a class="main_btn" href="#">Proceed to checkout</a>
+										<a class="gray_btn" href="{{ route('front.products') }}">Continue Shopping</a>
+										<a class="main_btn" href="{{ route('cart.checkout') }}">Proceed to checkout</a>
 									</div>
 								</td>
 							</tr>
