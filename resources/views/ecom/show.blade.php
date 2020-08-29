@@ -1,4 +1,4 @@
-@extends('layouts.ecommerce')
+@extends('layouts.ecom')
 
 @section('title')
     <title>Jual {{ $product->name }}</title>

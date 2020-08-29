@@ -113,7 +113,8 @@ class CartController extends Controller
                 'phone'=>$request->phone,
                 'address'=>$request->address,
                 'district_id'=>$request->district_id,
-                'phone'=>false
+                'activate_token'=>Str::random(30),
+                'status'=>false
             ]);
             $order=Order::create([
                 'invoice'=>Str::random(4).'-'.time(),

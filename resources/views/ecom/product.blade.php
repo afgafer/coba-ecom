@@ -1,4 +1,4 @@
-@extends('layouts.ecommerce')
+@extends('layouts.ecom')
 
 @section('title')
     <title>Jual Produk Fashion - DW Ecommerce</title>
@@ -113,4 +113,16 @@
         </div>
     </section>
     <!--================End Category Product Area =================-->
+    <h1>af</h1>
+        <script>
+        A= [1,2,5,7];
+        B= [3,4,8];
+
+        function coba(A , B){
+            for (let i = 0; i < A.length; i++) {
+                const element = array[i];
+                
+            }
+        }
+        </script>
 @endsection

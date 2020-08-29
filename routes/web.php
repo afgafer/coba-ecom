@@ -33,3 +33,14 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     Route::get('product/bulk','ProductController@massUploadForm')->name('product.bulk');
     Route::post('/product/bulk', 'ProductController@massUpload')->name('product.saveBulk');
 });
+
+Route::group(['prefix'=>'member'], function(){
+    Route::get('login','LoginController@loginV')->name('customer.login');
+    Route::post('login', 'LoginController@login')->name('customer.post_login');
+});
+
+Route::group(['middleware'=>'customer'], function(){
+    Route::get('dashboard', 'LoginController@dashboard')->name('customer.dashboard');
+    Route::get('logout', 'LoginController@logout')->name('customer.logout');
+});
+

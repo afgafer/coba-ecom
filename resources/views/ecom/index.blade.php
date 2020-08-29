@@ -1,4 +1,4 @@
-@extends('layouts.ecommerce')
+@extends('layouts.ecom')
 
 @section('title')
     <title>DW Ecommerce - Pusat Belanja Online</title>
@@ -102,4 +102,6 @@
 		</div>
 	</section>
 	<!--================End Feature Product Area =================-->
+	
 @endsection
+
