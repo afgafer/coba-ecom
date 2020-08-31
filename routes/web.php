@@ -42,5 +42,9 @@ Route::group(['prefix'=>'member'], function(){
 Route::group(['middleware'=>'customer'], function(){
     Route::get('dashboard', 'LoginController@dashboard')->name('customer.dashboard');
     Route::get('logout', 'LoginController@logout')->name('customer.logout');
+    Route::get('order', 'OrderController@index')->name('customer.index_order');
+    Route::get('order/{invoice}', 'OrderController@show')->name('customer.show_order');
+    Route::get('payment', 'OrderController@paymentForm')->name('customer.paymentForm');
+Route::post('payment', 'OrderController@payment')->name('customer.payment');
 });
 

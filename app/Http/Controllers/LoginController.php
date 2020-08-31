@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
 
 class LoginController extends Controller
 {
@@ -29,7 +29,11 @@ class LoginController extends Controller
     }
 
     public function dashboard(){
-        return view('ecom.dashboard');
+        $orders=Order::selectRaw("COALESCE(SUM(CASE WHEN status=0 THEN total END), 0) AS pending,
+            COALESCE(COUNT(CASE WHEN status=3 THEN total END), 0) AS shipping,
+            COALESCE(COUNT(CASE WHEN status=4 THEN total END), 0) AS complete
+            ")->where('customer_id', auth()->guard('customer')->user()->id)->get();
+        return view('ecom.dashboard', compact('orders'));
     }
 
     public function logout(){
